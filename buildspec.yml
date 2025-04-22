@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - pip install -r requirements.txt  # Instalar dependencias
+  pre_build:
+    commands:
+      - echo Running tests...  # Mensaje opcional para mostrar en el log
+  build:
+    commands:
+      - pytest --maxfail=1 --disable-warnings --tb=short  # Ejecutar pruebas, detener al primer fallo, ocultar advertencias y mostrar traceback corto
+  post_build:
+    commands:
+      - echo Tests finished.
+
+artifacts:
+  files:
+    - '**/*'
+
