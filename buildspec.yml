@@ -10,11 +10,6 @@ phases:
   build:
     commands:
       - pytest --maxfail=1 --disable-warnings --tb=short  # Ejecutar pruebas, detener al primer fallo, ocultar advertencias y mostrar traceback corto
-      - |
-        if [ $? -ne 0 ]; then
-          echo "Las pruebas fallaron. Deteniendo el build."
-          exit 1
-        fi
   post_build:
     commands:
       - echo "Empaquetando artefacto..."
@@ -25,8 +20,3 @@ phases:
 artifacts:
   files:
     - artifact.zip
-
-Deploy:
-  Type: S3
-  BucketName: bucket-deploy-1-1
-  Extract: true
