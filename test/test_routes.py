@@ -51,23 +51,23 @@ def mock_db():
         
         yield mock
 
-# @pytest.fixture
-# def mock_blacklist_query():
-#     with patch('app.models.Blacklist.query') as mock:
-#         # Configurar el mock para la consulta
-#         mock_filter = MagicMock()
-#         mock_first = MagicMock()
-        
-#         mock.filter_by.return_value = mock_filter
-#         mock_filter.first.return_value = mock_first
-        
-#         yield mock
-
 @pytest.fixture
-def mock_blacklist_query(app):
-    with app.app_context():
-        with patch.object(Blacklist, 'query') as mock_query:
-            yield mock_query
+def mock_blacklist_query():
+    with patch('app.models.Blacklist.query') as mock:
+        # Configurar el mock para la consulta
+        mock_filter = MagicMock()
+        mock_first = MagicMock()
+        
+        mock.filter_by.return_value = mock_filter
+        mock_filter.first.return_value = mock_first
+        
+        yield mock
+
+# @pytest.fixture
+# def mock_blacklist_query(app):
+#     with app.app_context():
+#         with patch.object(Blacklist, 'query') as mock_query:
+#             yield mock_query
 
 @pytest.fixture
 def mock_blacklist():
