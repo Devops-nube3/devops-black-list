@@ -9,8 +9,12 @@ phases:
       - echo Running tests...  # Mensaje para mostrar en el log
   build:
     commands:
-      - set -e
       - pytest --maxfail=1 --disable-warnings --tb=short  # Ejecutar pruebas, detener al primer fallo, ocultar advertencias y mostrar traceback corto
+      - |
+        if [ $? -ne 0 ]; then
+          echo "Las pruebas fallaron. Deteniendo el build."
+          exit 1
+        fi
   post_build:
     commands:
       - echo "Empaquetando artefacto..."
