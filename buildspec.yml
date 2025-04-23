@@ -9,6 +9,7 @@ phases:
       - echo Running tests...  # Mensaje para mostrar en el log
   build:
     commands:
+      - set -e
       - pytest --maxfail=1 --disable-warnings --tb=short  # Ejecutar pruebas, detener al primer fallo, ocultar advertencias y mostrar traceback corto
   post_build:
     commands:
