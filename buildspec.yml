@@ -17,10 +17,10 @@ phases:
         echo "Build fallido, no se empacará ni se subirá nada."
         exit 1
       fi
-      - echo "Empaquetando artefacto..."
-      - zip -r artifact.zip .
-      - echo "Subiendo artifact.zip a S3..."
-      - aws s3 cp artifact.zip s3://bucket-deploy-1-1/artifact.zip
+      echo "Empaquetando artefacto..."
+      zip -r artifact.zip .
+      echo "Subiendo artifact.zip a S3..."
+      aws s3 cp artifact.zip s3://bucket-deploy-1-1/artifact.zip
 
 artifacts:
   files:
